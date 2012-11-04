@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}Mirror of Nag'host{% endblock %}
+
+{% block content %}
+<h1>Client information, from {{ request.get_host }}</h1>
+<ul>
+    <li>IP address :
+        <code>
+        {% if meta.REMOTE_ADDR %}
+            <a href="http://whatismyipaddress.com/ip/{{ meta.REMOTE_ADDR }}">{{ meta.REMOTE_ADDR }}</a>
+        {% else %}
+            <i>unknown</i>
+        {% endif %}
+        </code>
+    </li>
+    {% if meta.HTTP_X_FORWARDED_FOR %}
+    <li>Forwarded for: <code>{{ meta.HTTP_X_FORWARDED_FOR }}</code></li>
+    {% endif %}
+    <li>User agent :
+        <code>
+        {% if meta.HTTP_USER_AGENT %}
+            {{ meta.HTTP_USER_AGENT }}
+        {% else %}
+            <i>unknown</i>
+        {% endif %}
+        </code>
+    </li>
+    <li id="client-js-useragent" style="display:none;"></li>
+    <li id="client-js-platform" style="display:none;"></li>
+    <li id="client-js-language" style="display:none;"></li>
+    <script language="javascript"><!--
+        $(function(){
+            $("#client-js-useragent").html("JavaScript user agent : <code>"+navigator.userAgent+"</code>").show();
+            if (typeof navigator.platform != 'undefined')
+                $("#client-js-platform").html("JavaScript platform : <code>"+navigator.platform+"</code>").show();
+            if (typeof navigator.language != 'undefined')
+                $("#client-js-language").html("JavaScript language : <code>"+navigator.language+"</code>").show();
+        });
+    --></script>
+    <li>Referer :
+        <code>
+        {% if meta.HTTP_REFERER %}
+            {{ meta.HTTP_REFERER }}
+        {% else %}
+            <i>unknown</i>
+        {% endif %}
+        </code>
+    </li>
+</ul>
+
+{% if request.COOKIES %}
+<h1>Cookies</h1>
+<ul>
+{% for name, value in request.COOKIES.items %}
+    <li><code>{{ name }} = {{ value }}</code></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<h1>HTTP headers</h1>
+<ul>
+{% for name, value in http_headers %}
+    <li><code>{{ name }}: {{ value }}</code></li>
+{% endfor %}
+</ul>
+
+<h1>User-Agent documentation</h1>
+<p>
+<a href="http://www.useragentstring.com/">http://www.useragentstring.com/</a> lists some user-agent strings.
+Here are some examples:
+</p>
+<ul>
+    <li><code>Mozilla/5.0 (X11; Linux x86_64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2</code>: Firefox 6</li>
+    <li><code>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</code>: MSIE 10 on Windows Seven</li>
+    <li><code>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.220 Safari/535.1</code>: Chromium</li>
+    <li><code>Mozilla/5.0 (Linux; U; Android 2.3; en-us) AppleWebKit/999+ (KHTML, like Gecko) Safari/999.9</code>: Android</li>
+    <li><code>Mozilla/4.0 (compatible; Linux 2.6.10) NetFront/3.3 Kindle/1.0 (screen 600x800)</code>: Amazon Kindle</li>
+    <li><code>NCSA Mosaic/1.0 (X11;Linux)</code> : Mosaic, ancient browser</li>
+</ul>
+{% endblock %}
+
+{% block quote %}
+Objects in mirror are closer than they appear
+<a href="http://xkcd.com/1125/">My side mirror</a>
+{% endblock %}

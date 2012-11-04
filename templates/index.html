@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}IoseNag, a realm of fishes and butterflies{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<h1>Welcome !</h1>
+<p>
+    This small website has only one tool for the time being, a <a href="{% url 'mirror:mirror' %}">mirror</a>.
+</p>
+{% endblock %}
+
+{% block quote %}
+Real programmers use butterflies
+<a href="http://xkcd.com/378/" title="xkcd 378">xkcd</a>
+{% endblock %}

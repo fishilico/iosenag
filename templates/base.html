@@ -1,0 +1,24 @@
+{% load url from future %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Nag'host{% endblock %}</title>
+    <link href="{% static "css/iosenag.css" %}" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="{% static "javascript/jquery-1.8.2.min.js" %}"></script>
+</head>
+<body>
+    {% block header %}
+        <a class="back" href="{% url 'index' %}">Back</a>
+    {% endblock %}
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% block footer %}
+        <a class="back" href="{% url 'index' %}">Back</a>
+    {% endblock %}
+    <div class="quote">
+        {% block quote %}{% endblock %}
+    </div>
+</body>
+</html>
