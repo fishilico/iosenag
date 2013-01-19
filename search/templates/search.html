@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div align="center">
+
+<form id="search-form" action="{% url 'search:index' %}" method="POST">
+{% csrf_token %}
+    <select name="short">
+        <option value="" label="---"{% if not short %} selected{% endif %}>---</option>
+    {% for shortcut in shortcuts %}
+        <option value="{{ shortcut.short }}" label="{{ shortcut.short }}"{% if short = shortcut.short %} selected{% endif %}>
+            {{ shortcut.short }}
+        </option>
+    {% endfor %}
+    </select>
+    <input id="search" type="text" name="q" value="{{ q }}" autocomplete="off" />
+    <input type="submit" value="Search" />
+</form>
+<script type="text/javascript">
+    $(function() {
+        // Auto-focus
+        $('input#search').focus();
+
+        // Clear button
+        var clear_btn = $('<input type="button" value="Clear">')
+            .click(function() {
+                $('input#search').val('');
+                $('form#search-form select').val('');
+                $('input#search').focus();
+            });
+        $('form#search-form').append(clear_btn);
+
+        // Change target link
+        var target_check = $('<input type="checkbox">')
+            .change(function() {
+                $('form#search-form').attr('target',
+                    this.checked ? '_blank' : '');
+            });
+        var target_div = $('<div>')
+            .append(target_check)
+            .append("Open in a new window");
+        $('form#search-form').append(target_div);
+    });
+</script>
+
+<h1>Available search engine shortcuts</h1>
+<table border="0" />
+{% for shortcut in shortcuts %}
+    <tr title="{{ shortcut.template }}">
+        <td>{{ shortcut.icon_tag }}</td>
+        <td><code>{{ shortcut.short }}</code></td>
+        <td>{{ shortcut.name }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}
+
+{% block quote %}
+Google represented about 75% of all searches (August 2003).
+<a href="http://usatoday30.usatoday.com/tech/news/2003-08-25-google_x.htm">Danny Sullivan</a>
+{% endblock %}
