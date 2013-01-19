@@ -16,11 +16,18 @@ SEARCH_IN_TEMPLATE = 'https://www.google.com/search?q=site:{site}+{q}'
 
 class Shortcut(models.Model):
     """Search shortcut"""
-    short = models.CharField(max_length=10, unique=True)
+    short = models.CharField(max_length=10, primary_key=True)
+    short.help_text = "Shortcut (short text)"
+
     name = models.CharField(max_length=30, unique=True)
+    short.help_text = "Name of the shortcut"
+
     icon = models.CharField(max_length=30, blank=True)
+    icon.help_text = "Path to an icon file"
+
     template = models.CharField(max_length=100)
-    description = models.TextField()
+    template.help_text = ("http://example.com/?query={q} or "
+                          "%shttp://example.com/" % SEARCH_IN_PREFIX)
 
     def __unicode__(self):
         return self.name

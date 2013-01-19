@@ -27,4 +27,4 @@ def index(request):
     return render(request, 'search.html', {
         'q': query,
         'short': short,
-        'shortcuts': Shortcut.objects.all().order_by('short')})
+        'shortcuts': Shortcut.objects.order_by('short')})
