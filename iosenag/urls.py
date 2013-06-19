@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView
+from django.views.generic import RedirectView, TemplateView
 import iosenag.mirror.urls
 import iosenag.search.urls
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    ('^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'icons/favicon.ico')),
     ('^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     (r'^404/?$', TemplateView.as_view(template_name='404.html')),
     (r'^500/?$', TemplateView.as_view(template_name='500.html')),
