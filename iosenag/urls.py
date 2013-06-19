@@ -6,6 +6,7 @@ import iosenag.search.urls
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    ('^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     (r'^404/?$', TemplateView.as_view(template_name='404.html')),
     (r'^500/?$', TemplateView.as_view(template_name='500.html')),
     (r'^mirror/', include(iosenag.mirror.urls, namespace='mirror')),
