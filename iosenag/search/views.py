@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from search.models import Shortcut
+from .models import Shortcut
 
 
 def index(request):

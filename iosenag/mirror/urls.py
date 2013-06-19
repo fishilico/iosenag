@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
-import mirror.views
+from . import views
 
 urlpatterns = patterns('',
-    url(r'^$', mirror.views.mirror, name='mirror'),
+    url(r'^$', views.mirror, name='mirror'),
 )

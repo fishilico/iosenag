@@ -1,5 +1,5 @@
 from django.contrib import admin
-from search.models import Shortcut
+from .models import Shortcut
 
 
 class ShortcutAdmin(admin.ModelAdmin):

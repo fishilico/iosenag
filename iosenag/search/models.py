@@ -1,12 +1,12 @@
+from django.conf import settings
 from django.db import models
 from django.utils.safestring import mark_safe
 from django.utils.http import urlquote_plus
-from iosenag.settings import BASE_PATH, STATIC_URL
 import re
 import os
 
-ICON_BASE_PATH = os.path.join(BASE_PATH, 'static', 'icons')
-ICON_BASE_URL = STATIC_URL + 'icons/'
+ICON_BASE_PATH = os.path.join(settings.STATIC_ROOT, 'icons')
+ICON_BASE_URL = settings.STATIC_URL + 'icons/'
 DEFAULT_ICON = 'void.png'
 
 # Search-in functionality

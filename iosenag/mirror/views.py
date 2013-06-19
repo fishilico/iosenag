@@ -6,7 +6,7 @@ def mirror(request):
     http_headers = {}
     for name, value in request.META.items():
         if name.startswith('HTTP_'):
-            name = '-'.join(map(lambda s: s.capitalize(), name[5:].split('_')))
+            name = '-'.join([s.capitalize() for s in name[5:].split('_')])
             http_headers[name] = value
 
     context = {

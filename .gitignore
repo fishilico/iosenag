@@ -1,8 +1,9 @@
 *.bak
 *.py[co]
+*.sqlite
 *.sqlite3
 *.swp
 *~
-/iosenag/settings.py
+/iosenag/settings/personal.py
 /spool
 
