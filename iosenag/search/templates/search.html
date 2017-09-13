@@ -10,7 +10,7 @@
     <select name="short">
         <option value="" label="---"{% if not short %} selected{% endif %}>---</option>
     {% for shortcut in shortcuts %}
-        <option value="{{ shortcut.short }}" label="{{ shortcut.short }}"{% if short = shortcut.short %} selected{% endif %}>
+        <option value="{{ shortcut.short }}" label="{{ shortcut.short }}"{% if short == shortcut.short %} selected{% endif %}>
             {{ shortcut.short }}
         </option>
     {% endfor %}

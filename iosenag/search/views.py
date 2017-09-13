@@ -4,14 +4,14 @@ from .models import Shortcut
 
 def index(request):
     """Main view for search app"""
-    query = request.REQUEST.get('q', '').strip()
-    short = request.REQUEST.get('short', '').strip()
+    query = (request.POST.get('q') or request.GET.get('q', '')).strip()
+    short = (request.POST.get('short') or request.GET.get('short', '')).strip()
     shortcut = None
 
     # Split query if no shortcut is to selected
     if query and not short:
         q = query.split(' ', 1)
-        short=q[0]
+        short = q[0]
         query = q[1] if len(q) >= 2 else ''
 
     # Find shortcut
