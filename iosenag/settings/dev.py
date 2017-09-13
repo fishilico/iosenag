@@ -2,7 +2,6 @@
 from .base import *
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 # Activate admin app
 INSTALLED_APPS = list(INSTALLED_APPS) + [
