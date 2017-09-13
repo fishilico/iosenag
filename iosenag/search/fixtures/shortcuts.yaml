@@ -1,0 +1,48 @@
+- model: search.shortcut
+  pk: b
+  fields: {name: Bing, icon: bing.ico, template: 'http://www.bing.com/search?q={q}'}
+- model: search.shortcut
+  pk: d
+  fields: {name: Dailymotion, icon: dailymotion.png, template: 'http://www.dailymotion.com/?search={q}'}
+- model: search.shortcut
+  pk: dj
+  fields: {name: Django, icon: django.ico, template: 'search-in:https://docs.djangoproject.com/'}
+- model: search.shortcut
+  pk: exa
+  fields: {name: Exalead, icon: exalead.ico, template: 'http://www.exalead.com/search/web/results/?q={q}'}
+- model: search.shortcut
+  pk: g
+  fields: {name: Google, icon: google.ico, template: 'http://www.google.com/search?q={q}'}
+- model: search.shortcut
+  pk: gde
+  fields: {name: Google Deutsch, icon: google.ico, template: 'http://www.google.de/search?hl=de&q={q}'}
+- model: search.shortcut
+  pk: gen
+  fields: {name: Google English, icon: google.ico, template: 'http://www.google.com/search?hl=en&q={q}'}
+- model: search.shortcut
+  pk: gfr
+  fields: {name: Google France, icon: google.ico, template: 'http://www.google.fr/search?hl=fr&q={q}'}
+- model: search.shortcut
+  pk: man
+  fields: {name: Man pages, icon: die.ico, template: 'search-in:http://linux.die.net/man/'}
+- model: search.shortcut
+  pk: php
+  fields: {name: PHP, icon: php.ico, template: 'http://www.php.net/search.php?show=quickref&lang=en&pattern={q}'}
+- model: search.shortcut
+  pk: py2
+  fields: {name: Python 2, icon: python.png, template: 'search-in:http://docs.python.org/2.7/'}
+- model: search.shortcut
+  pk: py3
+  fields: {name: Python 3, icon: python.png, template: 'search-in:http://docs.python.org/3.3/'}
+- model: search.shortcut
+  pk: w
+  fields: {name: Wikipedia, icon: wikipedia.ico, template: 'http://www.wikipedia.org/wiki/Special:Search?search={q}'}
+- model: search.shortcut
+  pk: wen
+  fields: {name: Wikipedia English, icon: wikipedia.ico, template: 'http://en.wikipedia.org/wiki/Special:Search?search={q}'}
+- model: search.shortcut
+  pk: wfr
+  fields: {name: Wikipedia France, icon: wikipedia.ico, template: 'http://fr.wikipedia.org/wiki/Special:Search?search={q}'}
+- model: search.shortcut
+  pk: y
+  fields: {name: Youtube, icon: youtube.ico, template: 'http://www.youtube.com/results?search_query={q}'}
